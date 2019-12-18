@@ -5,7 +5,7 @@ import World from './World';
 
 const Rogue = ({width, height, tilesize}) => {
   const canvasRef = useRef();
-  const [player, setPlayer] = useState(new Player(1,2, tilesize))
+  // const [player, setPlayer] = useState(new Player(1,2, tilesize))
   const [world, setWorld] = useState(new World(width, height, tilesize));
   let inputManager = new InputManager();
   const handleInput = (action, data) => {
@@ -21,6 +21,7 @@ const Rogue = ({width, height, tilesize}) => {
     let newWorld = new World();
     Object.assign(newWorld, world);
     newWorld.createCellularMap();
+    newWorld.moveToSpace(world.player);
     setWorld(newWorld)
   }, []); //does not calls createnewmap everytime player moves
 
