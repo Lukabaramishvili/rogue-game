@@ -38,7 +38,7 @@ const Rogue = ({width, height, tilesize}) => {
   useEffect(() => {
       console.log('Draw to canvas')
       const ctx = canvasRef.current.getContext('2d')
-      ctx.clearRect(0,0,width*tilesize, height*tilesize);
+      ctx.clearRect(0, 0, width * tilesize, height * tilesize);
       world.draw(ctx);
     });
     return (

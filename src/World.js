@@ -6,7 +6,7 @@ class World {
     this.width = width;
     this.height = height;
     this.tilesize = tilesize;
-    this.entities = [new Player(0,0,16)]
+    this.entities = [new Player(0, 0, 16)]
 
     this.worldmap = new Array(this.width);
     for (let x = 0; x < this.width; x++){
@@ -33,7 +33,8 @@ class World {
   isWall(x,y) {
     return (
       this.worldmap[x] === undefined ||
-      this.worldmap[y] === undefined || this.worldmap[x][y] === 1
+      this.worldmap[y] === undefined ||
+      this.worldmap[x][y] === 1
    );
   }
 
@@ -49,7 +50,7 @@ class World {
 
   createCellularMap() {
     var map = new Map.Cellular(this.width, this.height, { connected: true });
-    map.randomize(0.5);
+    map.randomize(0.5)
     var userCallback = (x, y, value) => {
       if (x === 0 || y === 0 || x === this.width -1 || y === this.height -1) {
         this.worldmap[x][y] = 1; //CREATE WALLS AROUND EDGES OF MAP
@@ -58,7 +59,7 @@ class World {
       this.worldmap[x][y] = value === 0 ? 1 : 0;
     };
     map.create(userCallback);
-    map.connect(userCallback, 1);
+    map.connect(userCallback, 0);
   }
 
   draw(context) {
@@ -73,12 +74,7 @@ class World {
   }
   drawWall(context,x,y) {
     context.fillStyle = '#000';
-    context.fillRect(
-      x * this.tilesize,
-      y * this.tilesize,
-      this.tilesize,
-      this.tilesize
-    );
+    context.fillRect(x * this.tilesize, y * this.tilesize, this.tilesize, this.tilesize);
   }
 }
 
