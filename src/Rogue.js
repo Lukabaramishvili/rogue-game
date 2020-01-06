@@ -26,7 +26,7 @@ const Rogue = ({width, height, tilesize}) => {
   }, []); //does not calls createnewmap everytime player moves
 
   useEffect(() => {
-    console.log('Binging')
+    console.log('Bind input')
     inputManager.bindKeys();
     inputManager.subscribe(handleInput);
     return () => {
